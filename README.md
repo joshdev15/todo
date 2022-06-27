@@ -1,6 +1,6 @@
-# TODO
+![TODO](https://github.com/joshdev15/todo/blob/main/docs/todo.svg)
 
-Command line interface program to manage a to do list. to do list.
+Command line interface program to manage a to do list.
 
 Writen in GO
 

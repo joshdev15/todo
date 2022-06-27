@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="600"
+   height="100"
+   viewBox="0 0 158.75 26.458333"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="todo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="0.84096521"
+     inkscape:cx="459.59095"
+     inkscape:cy="153.98972"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <sodipodi:guide
+       position="79.374998,13.229172"
+       orientation="1,0"
+       id="guide344"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="79.374998,13.229172"
+       orientation="0,-1"
+       id="guide346"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <rect
+       x="25.232929"
+       y="-78.419846"
+       width="333.09995"
+       height="155.16991"
+       id="rect402" />
+    <rect
+       x="25.232929"
+       y="-78.419846"
+       width="333.09995"
+       height="155.16991"
+       id="rect1015" />
+  </defs>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1043">
+      <rect
+         style="opacity:0.99;fill:#000000;fill-opacity:0;stroke-width:0.17424;stroke-linecap:round;stroke-linejoin:round"
+         id="rect184"
+         width="158.75"
+         height="26.458334"
+         x="0"
+         y="0"
+         ry="0.045194115" />
+      <g
+         aria-label="TODO"
+         transform="matrix(1.5540937,0,0,1.5540937,8.5925574,120.75325)"
+         id="text400"
+         style="font-size:14.6667px;line-height:1.25;font-family:'Montserrat Alternates';-inkscape-font-specification:'Montserrat Alternates';white-space:pre;shape-inside:url(#rect402);fill:#ffffff;stroke:#2765f5;stroke-width:0.555097;stroke-opacity:0.993629">
+        <path
+           d="m 31.099102,-64.939853 h -2.640006 v -8.213352 h -3.080007 v -2.053338 h 8.80002 v 2.053338 h -3.080007 z"
+           style="font-family:'Russo One';-inkscape-font-specification:'Russo One'"
+           id="path1017" />
+        <path
+           d="m 41.805806,-72.41987 q 0,-0.880002 -0.880002,-0.880002 h -2.493339 q -0.880002,0 -0.880002,0.880002 v 4.693344 q 0,0.880002 0.880002,0.880002 h 2.493339 q 0.880002,0 0.880002,-0.880002 z m 2.640006,4.693344 q 0,1.540004 -0.704002,2.244005 -0.689335,0.689335 -2.229338,0.689335 h -3.666675 q -1.540004,0 -2.244006,-0.689335 -0.689334,-0.704001 -0.689334,-2.244005 v -4.693344 q 0,-1.540003 0.689334,-2.229338 0.704002,-0.704002 2.244006,-0.704002 h 3.666675 q 1.540003,0 2.229338,0.704002 0.704002,0.689335 0.704002,2.229338 z"
+           style="font-family:'Russo One';-inkscape-font-specification:'Russo One'"
+           id="path1019" />
+        <path
+           d="m 51.632488,-75.206543 q 1.657337,0 2.508006,0.865335 0.865335,0.850669 0.865335,2.508006 v 3.520008 q 0,1.657337 -0.865335,2.522673 -0.850669,0.850668 -2.508006,0.850668 h -5.720013 v -10.26669 z m 0.733335,3.373341 q 0,-1.320003 -1.320003,-1.320003 h -2.493339 v 6.160014 h 2.493339 q 1.320003,0 1.320003,-1.320003 z"
+           style="font-family:'Russo One';-inkscape-font-specification:'Russo One'"
+           id="path1021" />
+        <path
+           d="m 63.072505,-72.41987 q 0,-0.880002 -0.880003,-0.880002 h -2.493339 q -0.880002,0 -0.880002,0.880002 v 4.693344 q 0,0.880002 0.880002,0.880002 h 2.493339 q 0.880003,0 0.880003,-0.880002 z m 2.640006,4.693344 q 0,1.540004 -0.704002,2.244005 -0.689335,0.689335 -2.229338,0.689335 h -3.666676 q -1.540003,0 -2.244005,-0.689335 -0.689335,-0.704001 -0.689335,-2.244005 v -4.693344 q 0,-1.540003 0.689335,-2.229338 0.704002,-0.704002 2.244005,-0.704002 h 3.666676 q 1.540003,0 2.229338,0.704002 0.704002,0.689335 0.704002,2.229338 z"
+           style="font-family:'Russo One';-inkscape-font-specification:'Russo One'"
+           id="path1023" />
+      </g>
+      <g
+         aria-label="CLI"
+         transform="matrix(0.18011918,0,0,0.18011918,72.630894,36.447693)"
+         id="text1013"
+         style="font-size:14.6667px;line-height:1.25;font-family:'Montserrat Alternates';-inkscape-font-specification:'Montserrat Alternates';white-space:pre;shape-inside:url(#rect1015);fill:#ffffff;stroke:#2765f5;stroke-width:0.555097;stroke-opacity:0.993629">
+        <path
+           d="m 34.032442,-65.08652 q -3.270674,0.293334 -5.426679,0.293334 -1.437337,0 -2.112005,-0.674668 -0.674668,-0.674668 -0.674668,-2.112005 v -4.693344 q 0,-1.540003 0.689335,-2.229338 0.704001,-0.704002 2.244005,-0.704002 h 5.280012 v 2.053338 h -4.693344 q -0.880002,0 -0.880002,0.880002 v 4.693344 q 0,0.337334 0.190667,0.542668 0.205334,0.190667 0.513335,0.190667 0.308,0 0.674668,0 0.366667,-0.01467 0.762668,-0.02933 0.396001,-0.01467 0.792002,-0.02933 0.410668,-0.01467 1.041336,-0.05867 0.645335,-0.044 1.59867,-0.102667 z"
+           style="font-family:'Russo One';-inkscape-font-specification:'Russo One'"
+           id="path1026" />
+        <path
+           d="m 37.845797,-66.993191 h 5.353345 v 2.053338 h -7.993351 v -10.26669 h 2.640006 z"
+           style="font-family:'Russo One';-inkscape-font-specification:'Russo One'"
+           id="path1028" />
+        <path
+           d="m 49.065819,-64.939853 h -5.280012 v -2.053338 h 1.320003 v -6.160014 h -1.320003 v -2.053338 h 5.280012 v 2.053338 h -1.320003 v 6.160014 h 1.320003 z"
+           style="font-family:'Russo One';-inkscape-font-specification:'Russo One'"
+           id="path1030" />
+      </g>
+    </g>
+  </g>
+</svg>
