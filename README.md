@@ -1,45 +1,54 @@
 # TODO
 
-Programa de Interfaz de línea de comandos para gestionar una lista de tareas por
-hacer (to do list).
+Command line interface program to manage a to do list. to do list.
 
-## Contruccion y ejecucion
+Writen in GO
 
-### Clonar
+## Language
+
+[README in Spanish](https://github.com/joshdev15/todo/blob/main/docs/README.ES.md)
+
+## Build and run
+
+### Clone
 
 ```bash
 git clone https://github.com/joshdev15/todo.git
 ```
 
-### Correr (para desarrolladores)
+### Run (for developers)
 
 ```bash
 git run cmd/todo/todo.go <command> <subcommand> <subcommand-value>
 ```
 
-### Construir / Compilar
+### Build / Compile
 
 ```bash
 git build cmd/todo/todo.go
 ```
 
-Ejecurar desde el compilado en tu directorio raíz
+Run from the compiled in your root directory
 
 ```bash
 ./todo <command> <subcommand> <subcommand-value>
 ```
 
-### Instalación
+### Installation
 
-Si ya tienes el repositorio en tu ordenador puedes usar el comando go install
-para instalar el ejecurable binario en tu GOPATH
+If you already have the repository on your computer you can use the command go
+install command to install the executable binary to your GOPATH
 
 ```bash
 git install cmd/todo/todo.go
 ```
 
-luego es mas facil correr el programa directamente con el comando "todo"
+then it is easier to run the program directly with the command `todo`.
 
 ```bash
 todo <command> <subcommand> <subcommand-value>
 ```
+
+## Basic commands
+
+[Commands](https://github.com/joshdev15/todo/blob/main/docs/help.md)
