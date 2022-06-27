@@ -1,4 +1,6 @@
-![TODO](https://github.com/joshdev15/todo/blob/main/docs/todo.svg)
+<div>
+  <img src="./todo.svg" width="100%">
+</div>
 
 Programa de Interfaz de línea de comandos para gestionar una lista de tareas por
 hacer (to do list).

@@ -1,4 +1,6 @@
-![TODO](https://github.com/joshdev15/todo/blob/main/docs/todo.svg)
+<div>
+  <img src="./docs/todo.svg" width="100%">
+</div>
 
 Command line interface program to manage a to do list.
 
