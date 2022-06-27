@@ -1,0 +1,23 @@
+Comandos básicos
+
+	list - Mostrar la lista de tareas
+
+		$	todo list
+
+	add - Agregar nueva tarea
+
+		$	todo add "ir a caminar"
+		
+	done - Marcar como hecha una tareas
+
+		$	todo remove uu8858
+
+	remove - Eliminar tarea
+
+		$	todo remove uu8858
+
+	clear - Eliminar todas las tareas
+
+		$	todo claar
+
+
