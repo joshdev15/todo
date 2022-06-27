@@ -51,4 +51,4 @@ todo <command> <subcommand> <subcommand-value>
 
 ## Basic commands
 
-[Commands](https://github.com/joshdev15/todo/blob/main/docs/help.md)
+[Commands](https://github.com/joshdev15/todo/blob/main/docs/commands.md)

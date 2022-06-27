@@ -52,4 +52,4 @@ todo <command> <subcommand> <subcommand-value>
 
 ## Comandos básicos
 
-[Comandos](https://github.com/joshdev15/todo/blob/main/docs/help.md)
+[Comandos](https://github.com/joshdev15/todo/blob/main/docs/commands.es.md)
