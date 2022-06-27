@@ -1,7 +1,6 @@
 package operations
 
 import (
-	"fmt"
 	"todo/internal/memory"
 	"todo/internal/structs/todo"
 )
@@ -12,7 +11,6 @@ func ListTodos() {
 
 func AddTodo(title, text string) {
 	newTodo := todo.New(title, text)
-	fmt.Println(newTodo.ToJSON())
 	memory.Set(newTodo.Id, newTodo.ToJSON())
 }
 

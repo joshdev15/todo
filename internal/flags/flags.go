@@ -27,8 +27,8 @@ func ReadFlags() {
 		readDoneFlags()
 	case "remove":
 		readRemoveFlags()
-	case "clear":
-		readClearFlag()
+	case "clean":
+		readCleanFlag()
 	case "help":
 		readHelpFlag()
 	default:
@@ -79,7 +79,7 @@ func readDoneFlags() {
 	}
 }
 
-func readClearFlag() {
+func readCleanFlag() {
 	operations.ClearTodoList()
 }
 

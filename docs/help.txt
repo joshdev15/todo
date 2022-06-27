@@ -1,0 +1,8 @@
+# Comandos básicos
+
+list   - Mostrar la lista de tareas
+add    - Agregar nueva tarea
+show   - Mostrar detalle de una tarea
+done   - Marcar una tarea como hecha 
+remove - Eliminar una tarea
+clean  - Eliminar todas las tareas

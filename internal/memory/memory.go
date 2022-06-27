@@ -62,7 +62,6 @@ func Get(id string) {
 		check.CompareErr(err)
 
 		key := bucket.Get([]byte(id))
-		fmt.Println(string(key))
 
 		var tmpItem todo.Todo
 		err = json.Unmarshal([]byte(key), &tmpItem)
@@ -115,9 +114,8 @@ func Remove(id string) {
 		cursor := bucket.Cursor()
 		exist := false
 
-		for k, v := cursor.Last(); k != nil; k, v = cursor.Prev() {
+		for k, _ := cursor.Last(); k != nil; k, _ = cursor.Prev() {
 			if string(k) == id {
-				fmt.Println(string(v))
 				exist = true
 				cursor.Delete()
 			}
@@ -125,6 +123,8 @@ func Remove(id string) {
 
 		if !exist {
 			fmt.Println("El id del todo no existe")
+		} else {
+			printer.Success("Remove todo")
 		}
 
 		return nil

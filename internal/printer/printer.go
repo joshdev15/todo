@@ -36,17 +36,17 @@ func TodoTable(todoList []todo.Todo) {
 	}
 
 	table.SetStyle(simpletable.StyleCompactLite)
-	fmt.Println("\n", table.String(), "\n")
+	fmt.Printf("\n%v\n\n", table.String())
 }
 
-func Success(function string) {
+func Success(functionality string) {
 	msg := "was successfully completed"
-	fmt.Printf("\n%v, %v\n", function, msg)
+	fmt.Printf("%v, %v\n", functionality, msg)
 }
 
 func Help() {
-	file, err := ioutil.ReadFile("help.txt")
+	file, err := ioutil.ReadFile("docs/help.txt")
 	check.Err(err)
 
-	fmt.Printf("todo help: \n%v", string(file))
+	fmt.Printf("%v", string(file))
 }
