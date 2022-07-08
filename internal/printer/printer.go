@@ -1,3 +1,4 @@
+// Printer, customized logs package.
 package printer
 
 import (
@@ -9,10 +10,9 @@ import (
 	"github.com/alexeyco/simpletable"
 )
 
-func TodoTable(todoList []todo.Todo) {
-	table := simpletable.New()
-
-	table.Header = &simpletable.Header{
+var (
+	// Header of the to-do list table
+	header = &simpletable.Header{
 		Cells: []*simpletable.Cell{
 			{Align: simpletable.AlignCenter, Text: "Title"},
 			{Align: simpletable.AlignCenter, Text: "Text"},
@@ -20,6 +20,12 @@ func TodoTable(todoList []todo.Todo) {
 			{Align: simpletable.AlignCenter, Text: "ID"},
 		},
 	}
+)
+
+// Print table in the terminal to display the task list.
+func TodoTable(todoList []todo.Todo) {
+	table := simpletable.New()
+	table.Header = header
 
 	for _, v := range todoList {
 		isDone := fmt.Sprintf("%v", v.Done)
@@ -39,11 +45,14 @@ func TodoTable(todoList []todo.Todo) {
 	fmt.Printf("\n%v\n\n", table.String())
 }
 
+// Print message notifying the user that the operation has been successfully
+// completed
 func Success(functionality string) {
 	msg := "was successfully completed"
 	fmt.Printf("%v, %v\n", functionality, msg)
 }
 
+// System help printout
 func Help() {
 	file, err := ioutil.ReadFile("docs/help.txt")
 	check.Err(err)

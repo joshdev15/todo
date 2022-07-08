@@ -1,3 +1,6 @@
+// The flags package provides the functionality to be performed by the program
+// (read, parse and execute) the arguments and flags that the user enters in
+// the command line.
 package flags
 
 import (
@@ -8,9 +11,13 @@ import (
 )
 
 var (
+	// action is a private package variable that stores at runtime the action to be
+	// taken according to the argument used by the user in the program execution.
 	action = ""
 )
 
+// Function that reads the second argument is os.Args which defines the action
+// to be taken by the program.
 func ReadFlags() {
 	if len(os.Args) > 1 {
 		action = os.Args[1]
@@ -18,25 +25,27 @@ func ReadFlags() {
 
 	switch action {
 	case "list":
-		readListFlags()
+		listFlag()
 	case "add":
-		readAddFlags()
+		addFlag()
 	case "show":
-		readShowFlags()
+		showFlag()
 	case "done":
-		readDoneFlags()
+		doneFlag()
 	case "remove":
-		readRemoveFlags()
+		removeFlag()
 	case "clean":
-		readCleanFlag()
+		cleanFlag()
 	case "help":
-		readHelpFlag()
+		helpFlag()
 	default:
-		readHelpFlag()
+		helpFlag()
 	}
 }
 
-func readListFlags() {
+// function that reads the "list" flags and executes the operation related to
+// the action
+func listFlag() {
 	listFlag := flag.NewFlagSet("list", flag.ContinueOnError)
 
 	var title string
@@ -47,7 +56,9 @@ func readListFlags() {
 	operations.ListTodos()
 }
 
-func readAddFlags() {
+// function that reads the "add" flags and executes the operation related to
+// the action
+func addFlag() {
 	addFlag := flag.NewFlagSet("add", flag.ContinueOnError)
 
 	var title string
@@ -61,28 +72,36 @@ func readAddFlags() {
 	operations.AddTodo(title, text)
 }
 
-func readShowFlags() {
+// function that reads the "show" flags and executes the operation related to
+// the action
+func showFlag() {
 	if len(os.Args) > 2 {
 		operations.ShowTodo(os.Args[2])
 	}
 }
 
-func readRemoveFlags() {
+// function that reads the third argument of os.Args and executes the operation
+// related to the action "remove".
+func removeFlag() {
 	if len(os.Args) > 2 {
 		operations.RemoveTodo(os.Args[2])
 	}
 }
 
-func readDoneFlags() {
+// function that reads the third argument of os.Args and executes the operation
+// related to the action "done".
+func doneFlag() {
 	if len(os.Args) > 2 {
 		operations.MarkAsDone(os.Args[2])
 	}
 }
 
-func readCleanFlag() {
+// function that executes the operation related to the action "clean"
+func cleanFlag() {
 	operations.ClearTodoList()
 }
 
-func readHelpFlag() {
+// function that prints help on the terminal
+func helpFlag() {
 	printer.Help()
 }

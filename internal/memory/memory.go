@@ -1,3 +1,5 @@
+// The memory package is the one in charge of managing the writing and reading
+// in the embedded memory of the program, in this case bbolt library.
 package memory
 
 import (
@@ -11,15 +13,18 @@ import (
 )
 
 const (
-	memoryPath    = "memory/user"
-	bucketName    = "TODOS"
-	subBucketName = "LIST"
+	// path and file name of the embedded database file
+	memoryPath = ".database"
+	// name of the bucket in the database
+	bucketName = "TODOS"
 )
 
 var (
+	// db is the database connection
 	db *bbolt.DB
 )
 
+// Open, opens the communication with the database.
 func Open() {
 	database, err := bbolt.Open(memoryPath, 0666, nil)
 	check.Err(err)
@@ -27,10 +32,13 @@ func Open() {
 	createBucket()
 }
 
+// Close communication
 func Close() {
 	db.Close()
 }
 
+// Create Bucket, Action to create bucket, a process necessary for the bbolt
+// database.
 func createBucket() {
 	err := db.Update(func(tx *bbolt.Tx) error {
 		_, err := tx.CreateBucketIfNotExists([]byte(bucketName))
@@ -40,6 +48,9 @@ func createBucket() {
 	check.CompareErr(err)
 }
 
+// Set saves an element, this function receives two arguments key and value,
+// both must be string type
+// example: memory.Set("key", "value")
 func Set(key, value string) {
 	err := db.Update(func(tx *bbolt.Tx) error {
 		bucket, err := tx.CreateBucketIfNotExists([]byte(bucketName))
@@ -56,15 +67,17 @@ func Set(key, value string) {
 	check.CompareErr(err)
 }
 
-func Get(id string) {
+// Get, gets an element with the element key.
+// example: memory.Get("key")
+func Get(key string) {
 	err := db.Update(func(tx *bbolt.Tx) error {
 		bucket, err := tx.CreateBucketIfNotExists([]byte(bucketName))
 		check.CompareErr(err)
 
-		key := bucket.Get([]byte(id))
+		todoJSON := bucket.Get([]byte(key))
 
 		var tmpItem todo.Todo
-		err = json.Unmarshal([]byte(key), &tmpItem)
+		err = json.Unmarshal([]byte(todoJSON), &tmpItem)
 		check.Err(err)
 		printer.TodoTable([]todo.Todo{tmpItem})
 
@@ -74,20 +87,22 @@ func Get(id string) {
 	check.CompareErr(err)
 }
 
-func SetDone(id string) {
+// SetDone marks a task as ready or not ready.
+// example: memory.SetDone("key")
+func SetDone(key string) {
 	err := db.Update(func(tx *bbolt.Tx) error {
 		bucket, err := tx.CreateBucketIfNotExists([]byte(bucketName))
 		check.CompareErr(err)
 
-		key := bucket.Get([]byte(id))
+		todoJSON := bucket.Get([]byte(key))
 
 		var tmpItem todo.Todo
-		err = json.Unmarshal([]byte(key), &tmpItem)
+		err = json.Unmarshal([]byte(todoJSON), &tmpItem)
 		check.Err(err)
 
 		tmpItem.Done = !tmpItem.Done
 		value := tmpItem.ToJSON()
-		err = bucket.Put([]byte(id), []byte(value))
+		err = bucket.Put([]byte(key), []byte(value))
 		check.Err(err)
 
 		isDone := "done"
@@ -106,7 +121,9 @@ func SetDone(id string) {
 	check.CompareErr(err)
 }
 
-func Remove(id string) {
+// Remove, removes an item from memory using its key.
+// example: memory.Remove("key")
+func Remove(key string) {
 	err := db.Update(func(tx *bbolt.Tx) error {
 		bucket, err := tx.CreateBucketIfNotExists([]byte(bucketName))
 		check.CompareErr(err)
@@ -115,7 +132,7 @@ func Remove(id string) {
 		exist := false
 
 		for k, _ := cursor.Last(); k != nil; k, _ = cursor.Prev() {
-			if string(k) == id {
+			if string(k) == key {
 				exist = true
 				cursor.Delete()
 			}
@@ -133,6 +150,8 @@ func Remove(id string) {
 	check.CompareErr(err)
 }
 
+// GetList fetches all items from memory and displays them in a list
+// example: memory.GetList()
 func GetList() {
 	err := db.Update(func(tx *bbolt.Tx) error {
 		bucket, err := tx.CreateBucketIfNotExists([]byte(bucketName))
@@ -156,6 +175,8 @@ func GetList() {
 	check.CompareErr(err)
 }
 
+// DeleteAllTodos, Eleminates all the elements stored in memory
+// example: memory.DeleteAllTodos()
 func DeleteAllTodos() {
 	err := db.Update(func(tx *bbolt.Tx) error {
 		bucket, err := tx.CreateBucketIfNotExists([]byte(bucketName))

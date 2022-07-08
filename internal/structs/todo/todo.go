@@ -7,6 +7,8 @@ import (
 	"github.com/google/uuid"
 )
 
+// New creates a new Todo
+// example: newTodo := todo.New("My todo", "This is my todo")
 func New(title, text string) *Todo {
 	return &Todo{
 		Id:    uuid.NewString(),
@@ -16,6 +18,7 @@ func New(title, text string) *Todo {
 	}
 }
 
+// Todo model
 type Todo struct {
 	Id    string `json:"id,omitempty"`
 	Title string `json:"title,omitempty"`
@@ -23,6 +26,7 @@ type Todo struct {
 	Done  bool   `json:"done,omitempty"`
 }
 
+// Convert the current to-do to json
 func (t *Todo) ToJSON() string {
 	bytes, err := json.Marshal(t)
 	check.Err(err)
