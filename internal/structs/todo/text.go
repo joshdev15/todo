@@ -14,7 +14,7 @@ func (t *Text) Elipsis() string {
 	runeText := []rune(finalString)
 
 	if len(runeText) > maxLength {
-		finalString = fmt.Sprintf("%v...", string(runeText[0:maxLength]))
+		finalString = fmt.Sprintf("%v...", string(runeText[:maxLength]))
 	}
 
 	return finalString
