@@ -3,37 +3,67 @@
 package operations
 
 import (
+	"todo/internal/check"
 	"todo/internal/memory"
+	"todo/internal/printer"
 	"todo/internal/structs/todo"
 )
 
 // Execution of listing the to-do list
 func ListTodos() {
-	memory.GetList()
+	list, err := memory.GetAll()
+	check.Err(err)
+	todoList := []todo.Todo{}
+
+	for _, v := range list {
+		currentTodo, err := todo.JSONToTODO(v)
+		check.Err(err)
+		todoList = append(todoList, currentTodo)
+	}
+
+	printer.TodoTable(todoList)
 }
 
 // Execution of addition of a new to-do
-func AddTodo(title, text string) {
-	newTodo := todo.New(title, text)
-	memory.Set(newTodo.Id, newTodo.ToJSON())
+func AddTodo(title, message string) {
+	newTodo := todo.New(title, message)
+	err := memory.Set(newTodo.Id, newTodo.ToJSON())
+	check.Err(err)
+	printer.Success("Add to-do")
 }
 
 // Execution of displaying the information contained in a task
-func ShowTodo(id string) {
-	memory.Get(id)
-}
+func Show(key string) {
+	result, err := memory.Get(key)
+	check.Err(err)
 
-// Execution of marking a to-do as done
-func MarkAsDone(id string) {
-	memory.SetDone(id)
-}
+	currentTodo, err := todo.JSONToTODO(result)
+	check.Err(err)
 
-// Execution of cleaning the to-do list
-func ClearTodoList() {
-	memory.DeleteAllTodos()
+	printer.Show(currentTodo)
 }
 
 // Execution of eliminating a to-do
-func RemoveTodo(id string) {
-	memory.Remove(id)
+func Remove(key string) {
+	memory.Remove(key)
+}
+
+// Execution of cleaning the to-do list
+func RemoveAll() {
+	memory.DeleteAllTodos()
+}
+
+// Execution of marking a to-do as done
+func MarkAsDone(key string) {
+	result, err := memory.Get(key)
+	check.Err(err)
+
+	currentTodo, err := todo.JSONToTODO(result)
+	check.Err(err)
+
+	currentTodo.Done = !currentTodo.Done
+	modifiedTodo := currentTodo.ToJSON()
+
+	err = memory.Set(key, modifiedTodo)
+	check.Err(err)
 }

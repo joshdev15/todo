@@ -3,11 +3,9 @@
 package memory
 
 import (
-	"encoding/json"
 	"fmt"
 	"todo/internal/check"
 	"todo/internal/printer"
-	"todo/internal/structs/todo"
 
 	"go.etcd.io/bbolt"
 )
@@ -51,74 +49,51 @@ func createBucket() {
 // Set saves an element, this function receives two arguments key and value,
 // both must be string type
 // example: memory.Set("key", "value")
-func Set(key, value string) {
+func Set(key, value string) error {
 	err := db.Update(func(tx *bbolt.Tx) error {
-		bucket, err := tx.CreateBucketIfNotExists([]byte(bucketName))
-		check.CompareErr(err)
-
-		err = bucket.Put([]byte(key), []byte(value))
-		check.Err(err)
-
-		printer.Success("Add new todo")
+		bucket := tx.Bucket([]byte(bucketName))
+		err := bucket.Put([]byte(key), []byte(value))
+		if err != nil {
+			return err
+		}
 
 		return nil
 	})
 
-	check.CompareErr(err)
+	return err
 }
 
 // Get, gets an element with the element key.
 // example: memory.Get("key")
-func Get(key string) {
-	err := db.Update(func(tx *bbolt.Tx) error {
-		bucket, err := tx.CreateBucketIfNotExists([]byte(bucketName))
-		check.CompareErr(err)
+func Get(key string) (string, error) {
+	result := ""
 
-		todoJSON := bucket.Get([]byte(key))
-
-		var tmpItem todo.Todo
-		err = json.Unmarshal([]byte(todoJSON), &tmpItem)
-		check.Err(err)
-		printer.TodoTable([]todo.Todo{tmpItem})
-
+	err := db.View(func(tx *bbolt.Tx) error {
+		value := tx.Bucket([]byte(bucketName)).Get([]byte(key))
+		result = string(value)
 		return nil
 	})
 
-	check.CompareErr(err)
+	return result, err
 }
 
-// SetDone marks a task as ready or not ready.
-// example: memory.SetDone("key")
-func SetDone(key string) {
+// GetAll fetches all items from memory and displays them in a list
+// example: memory.GetList()
+func GetAll() ([]string, error) {
+	todoList := []string{}
+
 	err := db.Update(func(tx *bbolt.Tx) error {
-		bucket, err := tx.CreateBucketIfNotExists([]byte(bucketName))
-		check.CompareErr(err)
+		bucket := tx.Bucket([]byte(bucketName))
+		cursor := bucket.Cursor()
 
-		todoJSON := bucket.Get([]byte(key))
-
-		var tmpItem todo.Todo
-		err = json.Unmarshal([]byte(todoJSON), &tmpItem)
-		check.Err(err)
-
-		tmpItem.Done = !tmpItem.Done
-		value := tmpItem.ToJSON()
-		err = bucket.Put([]byte(key), []byte(value))
-		check.Err(err)
-
-		isDone := "done"
-		if tmpItem.Done {
-			isDone = "done"
-		} else {
-			isDone = "not done"
+		for k, v := cursor.Last(); k != nil; k, v = cursor.Prev() {
+			todoList = append(todoList, string(v))
 		}
-
-		isDone = fmt.Sprintf("Set as %v", isDone)
-		printer.Success(isDone)
 
 		return nil
 	})
 
-	check.CompareErr(err)
+	return todoList, err
 }
 
 // Remove, removes an item from memory using its key.
@@ -143,31 +118,6 @@ func Remove(key string) {
 		} else {
 			printer.Success("Remove todo")
 		}
-
-		return nil
-	})
-
-	check.CompareErr(err)
-}
-
-// GetList fetches all items from memory and displays them in a list
-// example: memory.GetList()
-func GetList() {
-	err := db.Update(func(tx *bbolt.Tx) error {
-		bucket, err := tx.CreateBucketIfNotExists([]byte(bucketName))
-		check.CompareErr(err)
-
-		cursor := bucket.Cursor()
-		todoList := []todo.Todo{}
-
-		for k, v := cursor.Last(); k != nil; k, v = cursor.Prev() {
-			var tmpItem todo.Todo
-			err = json.Unmarshal([]byte(v), &tmpItem)
-			check.Err(err)
-			todoList = append(todoList, tmpItem)
-		}
-
-		printer.TodoTable(todoList)
 
 		return nil
 	})

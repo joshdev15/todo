@@ -4,7 +4,9 @@
 
 Command line interface program to manage a to do list.
 
-Writen in GO
+This small program has no real practical use, it is only a learning resource.
+
+Writen in GO.
 
 ## Language
 

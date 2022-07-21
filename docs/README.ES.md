@@ -5,7 +5,9 @@
 Programa de Interfaz de línea de comandos para gestionar una lista de tareas por
 hacer (to do list).
 
-Escrito en GO
+Este pequeño programa no tiene ninguna utilidad práctica real, es sólo un recurso de aprendizaje.
+
+Escrito en GO.
 
 ## Idioma
 
