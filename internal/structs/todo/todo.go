@@ -24,10 +24,10 @@ func New(title, message string) *Todo {
 
 // Todo model
 type Todo struct {
-	Id      string `json:"id,omitempty"`
-	Title   Text   `json:"title,omitempty"`
-	Message Text   `json:"message,omitempty"`
-	Done    bool   `json:"done,omitempty"`
+	Id      string `json:"id"`
+	Title   Text   `json:"title"`
+	Message Text   `json:"message"`
+	Done    bool   `json:"done"`
 }
 
 // Convert the current to-do to json
