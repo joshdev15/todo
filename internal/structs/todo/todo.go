@@ -2,6 +2,7 @@ package todo
 
 import (
 	"encoding/json"
+	"strings"
 	"todo/internal/check"
 
 	"github.com/google/uuid"
@@ -9,21 +10,24 @@ import (
 
 // New creates a new Todo
 // example: newTodo := todo.New("My todo", "This is my todo")
-func New(title, text string) *Todo {
+func New(title, message string) *Todo {
+	tmpNewId := uuid.NewString()
+	id := strings.ReplaceAll(tmpNewId, "-", "")
+
 	return &Todo{
-		Id:    uuid.NewString(),
-		Title: title,
-		Text:  text,
-		Done:  false,
+		Id:      id,
+		Title:   Text(title),
+		Message: Text(message),
+		Done:    false,
 	}
 }
 
 // Todo model
 type Todo struct {
-	Id    string `json:"id,omitempty"`
-	Title string `json:"title,omitempty"`
-	Text  string `json:"text,omitempty"`
-	Done  bool   `json:"done,omitempty"`
+	Id      string `json:"id"`
+	Title   Text   `json:"title"`
+	Message Text   `json:"message"`
+	Done    bool   `json:"done"`
 }
 
 // Convert the current to-do to json
@@ -31,4 +35,15 @@ func (t *Todo) ToJSON() string {
 	bytes, err := json.Marshal(t)
 	check.Err(err)
 	return string(bytes)
+}
+
+func JSONToTODO(value string) (Todo, error) {
+	var todoElement Todo
+
+	err := json.Unmarshal([]byte(value), &todoElement)
+	if err != nil {
+		return Todo{}, err
+	}
+
+	return todoElement, nil
 }

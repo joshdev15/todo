@@ -24,7 +24,7 @@ func Err(err error) {
 // executes a panic and displays a message.
 func ErrWithMsg(err error, msg string) {
 	if err != nil {
-		log.Fatalf("%v: %v", msg, err)
+		log.Printf("%v: %v", msg, err)
 		panic(err)
 	}
 }

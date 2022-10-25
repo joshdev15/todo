@@ -13,7 +13,7 @@ all list
 Add new task
 
 ```bash
-todo add -title First -text "Go for a walk"
+todo add -t First -m "Go for a walk"
 ```
 
 ## Show
@@ -34,16 +34,14 @@ todo done <id>
 
 ## Remove
 
-Remove a task
+Remove a to-do
 
 ```bash
 todo remove <id>
 ```
 
-## Clean
-
-Remove all tasks
+Remove all to-do list
 
 ```bash
-all clean
+todo remove -a
 ```

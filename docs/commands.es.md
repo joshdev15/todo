@@ -13,7 +13,7 @@ todo list
 Agregar nueva tarea
 
 ```bash
-todo add -title Primera -text "Ir a caminar"
+todo add -t Primera -m "Ir a caminar"
 ```
 
 ## Show
@@ -40,10 +40,8 @@ Eliminar una tarea
 todo remove <id>
 ```
 
-## Clean
-
-Eliminar todas las tareas
+Eliminar toda la lista de tareas
 
 ```bash
-todo clean
+todo remove -a
 ```
