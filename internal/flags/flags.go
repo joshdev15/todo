@@ -13,7 +13,16 @@ import (
 var (
 	// action is a private package variable that stores at runtime the action to be
 	// taken according to the argument used by the user in the program execution.
-	action = ""
+	action        = ""
+	actionOptions = map[string]func(){
+		"list":    listFlag,
+		"add":     addFlag,
+		"show":    showFlag,
+		"done":    doneFlag,
+		"remove":  removeFlag,
+		"help":    helpFlag,
+		"version": versionFlag,
+	}
 )
 
 // Function that reads the second argument is os.Args which defines the action
@@ -23,22 +32,22 @@ func ReadFlags() {
 		action = os.Args[1]
 	}
 
-	switch action {
-	case "list":
-		listFlag()
-	case "add":
-		addFlag()
-	case "show":
-		showFlag()
-	case "done":
-		doneFlag()
-	case "remove":
-		removeFlag()
-	case "help":
-		helpFlag()
-	default:
-		helpFlag()
+	var existAction bool = false
+	var tmpAction func()
+	for k := range actionOptions {
+		if action == k {
+			existAction = true
+			tmpAction = actionOptions[action]
+			break
+		}
 	}
+
+	if !existAction {
+		helpFlag()
+		return
+	}
+
+	tmpAction()
 }
 
 // function that reads the "list" flags and executes the operation related to
@@ -97,7 +106,6 @@ func removeFlag() {
 		return
 
 	case false:
-
 		if len(os.Args) >= 2 {
 			operations.Remove(os.Args[2])
 			return
@@ -118,4 +126,8 @@ func doneFlag() {
 // function that prints help on the terminal
 func helpFlag() {
 	printer.Help()
+}
+
+func versionFlag() {
+	printer.Version()
 }

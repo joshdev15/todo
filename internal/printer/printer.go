@@ -1,11 +1,11 @@
-// Printer, customized logs package.
+// Printer, customized todo-cli logs package.
 package printer
 
 import (
 	"fmt"
-	"io/ioutil"
 	"todo/internal/check"
 	"todo/internal/structs/todo"
+	"todo/internal/texts"
 
 	"github.com/alexeyco/simpletable"
 )
@@ -88,15 +88,21 @@ func Show(currentTodo todo.Todo) {
 
 // System help printout
 func Help() {
-	file, err := ioutil.ReadFile("docs/help.txt")
-	check.Err(err)
+	for _, line := range texts.HelpText {
+		fmt.Printf("%v\n", line)
+	}
 
-	fmt.Printf("%v", string(file))
+}
+
+func Version() {
+	for _, line := range texts.VersionText {
+		fmt.Printf("%v\n", line)
+	}
 }
 
 // Print message when no valid argument exists
 func NoArgs() {
-	fmt.Println("The to-do id to process is missing")
+	fmt.Println("The todo id to process is missing")
 }
 
 func Modal(action string) bool {

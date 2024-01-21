@@ -16,6 +16,12 @@ Agregar nueva tarea
 todo add -t Primera -m "Ir a caminar"
 ```
 
+Agregar nueva tarea con titulo
+
+```bash
+todo add -t Primera -m "Ir a caminar"
+```
+
 ## Show
 
 Marcar como hecha una tareas

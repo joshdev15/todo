@@ -5,12 +5,18 @@
 Display the list of tasks
 
 ```bash
-all list
+todo list
 ```
 
 ## Add
 
 Add new task
+
+```bash
+todo add "Go for a walk"
+```
+
+Add new task with title
 
 ```bash
 todo add -t First -m "Go for a walk"
