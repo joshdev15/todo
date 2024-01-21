@@ -4,6 +4,7 @@ package memory
 
 import (
 	"fmt"
+	"os"
 	"todo/internal/check"
 	"todo/internal/printer"
 
@@ -11,9 +12,9 @@ import (
 )
 
 const (
-	// path and file name of the embedded database file
-	memoryPath = ".database"
-	// name of the bucket in the database
+	// File name of the embedded database file
+	memoryName = ".todo-memory"
+	// Name of the bucket in the database
 	bucketName = "TODOS"
 )
 
@@ -24,7 +25,12 @@ var (
 
 // Open, opens the communication with the database.
 func Open() {
-	database, err := bbolt.Open(memoryPath, 0666, nil)
+	homeDir, err := os.UserHomeDir()
+	check.Err(err)
+
+	finalText := fmt.Sprintf("%v/%v", homeDir, memoryName)
+
+	database, err := bbolt.Open(finalText, 0666, nil)
 	check.Err(err)
 	db = database
 	createBucket()

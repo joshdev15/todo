@@ -7,6 +7,6 @@ import (
 
 func main() {
 	memory.Open()
+	defer memory.Close()
 	flags.ReadFlags()
-	memory.Close()
 }
