@@ -88,11 +88,6 @@ func Show(currentTodo todo.Todo) {
 
 // System help printout
 func Help() {
-	// cmd := exec.Command("cat", "./docs/help.txt")
-	// output, err := cmd.CombinedOutput()
-	// check.Err(err)
-	// fmt.Println(string(output))
-
 	for _, line := range texts.HelpText {
 		fmt.Printf("%v\n", line)
 	}
@@ -100,11 +95,6 @@ func Help() {
 }
 
 func Version() {
-	// cmd := exec.Command("cat", "./docs/version.txt")
-	// output, err := cmd.CombinedOutput()
-	// check.Err(err)
-	// fmt.Println(string(output))
-
 	for _, line := range texts.VersionText {
 		fmt.Printf("%v\n", line)
 	}
