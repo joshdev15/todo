@@ -13,7 +13,7 @@ todo list
 Agregar nueva tarea
 
 ```bash
-todo add -t Primera -m "Ir a caminar"
+todo add "Ir a caminar"
 ```
 
 Agregar nueva tarea con titulo
